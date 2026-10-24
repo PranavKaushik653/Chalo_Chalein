@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chalo Chalein | India's Youth & Millennial Group Travel Marketplace</title>
+  <meta name="description" content="Discover verified experiential group trips across India. Safe Escrow token bookings, transparent community batches, and curated tour operators.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- TOP ANNOUNCEMENT BANNER -->
+  <aside class="top-announcement" aria-label="Escrow Guarantee Notice">
+    <div class="announcement-content">
+      <span class="escrow-pill">🛡️ 100% Escrow Guarantee</span>
+      <p>Your money stays locked safely until 24 hours before departure. Lock seats with small token amounts!</p>
+      <button class="banner-close-btn" id="bannerCloseBtn" title="Dismiss banner">&times;</button>
+    </div>
+  </aside>
+
+  <!-- MAIN NAVIGATION -->
+  <header class="main-header" id="mainHeader">
+    <div class="header-container">
+      
+      <!-- Logo -->
+      <a href="#" class="brand-logo" id="logoLink">
+        <div class="logo-mark">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+            <path d="M16 3L3 10L16 17L29 10L16 3Z" fill="var(--color-terracotta)"/>
+            <path d="M7 16L3 18L16 25L29 18L25 16L16 21L7 16Z" fill="var(--color-sage)"/>
+            <path d="M3 24L7 26L16 31L25 26L29 24L16 29L3 24Z" fill="var(--color-ochre)"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">Chalo Chalein</span>
+          <span class="logo-tagline">Group Trips &amp; Escrow</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <button class="nav-link active" data-view="explore">Explore Trips</button>
+        <button class="nav-link" data-view="how-it-works">How Escrow Works</button>
+        <button class="nav-link" id="navDashboardBtn" data-view="dashboard">
+          <span class="dashboard-nav-text">My Dashboard</span>
+          <span class="badge-role" id="headerRoleBadge">Traveller</span>
+        </button>
+      </nav>
+
+      <!-- User Role & Action Area -->
+      <div class="header-actions">
+        <!-- Quick Switch Demo Role pill -->
+        <div class="role-switch-pill" title="Quick switch between viewing as a Traveller or an Organiser">
+          <span class="role-switch-label">Role:</span>
+          <button class="role-toggle-btn active" id="roleToggleTraveller" data-role="traveller">Traveller</button>
+          <button class="role-toggle-btn" id="roleToggleOrganiser" data-role="organiser">Organiser</button>
+        </div>
+
+        <!-- Auth Button / User Profile -->
+        <div class="auth-wrapper" id="authWrapper">
+          <button class="btn btn-outline-earth" id="openAuthModalBtn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            <span>Sign In / Join</span>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle Menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <div class="mobile-drawer-header">
+        <span class="mobile-drawer-title">Menu</span>
+        <button class="mobile-drawer-close" id="mobileDrawerClose">&times;</button>
+      </div>
+      <div class="mobile-drawer-body">
+        <div class="mobile-role-selector">
+          <label>Viewing platform as:</label>
+          <div class="mobile-role-buttons">
+            <button class="btn btn-sm role-select-mobile active" data-role="traveller">🎒 Traveller</button>
+            <button class="btn btn-sm role-select-mobile" data-role="organiser">🏕️ Organiser</button>
+          </div>
+        </div>
+        <div class="mobile-nav-links">
+          <button class="mobile-nav-link active" data-view="explore">🧭 Explore Trips</button>
+          <button class="mobile-nav-link" data-view="dashboard">📊 Dashboard</button>
+          <button class="mobile-nav-link" data-view="how-it-works">🛡️ How Escrow Works</button>
+        </div>
+        <div class="mobile-auth-area" id="mobileAuthArea">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN APP CONTAINER -->
+  <main id="appContainer">
+
+    <!-- VIEW 1: EXPLORE / MARKETPLACE VIEW -->
+    <section class="view-section active" id="viewExplore">
+      
+      <!-- HERO BANNER -->
+      <section class="hero-section">
+        <div class="hero-container">
+          <div class="hero-content">
+            <div class="hero-badge">
+              <span class="dot"></span>
+              India's 1st Escrow-Protected Group Travel Platform
+            </div>
+            <h1 class="hero-title">
+              Chalo Chalein! Explore India with <span class="highlight-earth">Curated Travel Communities</span>
+            </h1>
+            <p class="hero-subtitle">
+              Say goodbye to risky Instagram DM transfers. Reserve high-vibe group batches to Spiti, Meghalaya, Kasol &amp; Kerala with <strong>₹1,000–₹2,000 token locks</strong>. Protected by escrow until departure.
+            </p>
+
+            <!-- Quick Trust Highlights -->
+            <div class="hero-perks">
+              <div class="perk-item">
+                <span class="perk-icon">🔒</span>
+                <span>Money Held in Escrow</span>
+              </div>
+              <div class="perk-item">
+                <span class="perk-icon">✨</span>
+                <span>Verified GST &amp; Community Hosts</span>
+              </div>
+              <div class="perk-item">
+                <span class="perk-icon">⚡</span>
+                <span>Lock Seat with 15% Token</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Search Box Card -->
+          <div class="hero-search-card">
+            <div class="search-card-header">
+              <h3>Find Your Next Expedition</h3>
+              <p>Filter through verified community trips &amp; batches</p>
+            </div>
+            <form class="search-form" id="mainSearchForm" onsubmit="event.preventDefault();">
+              <div class="form-group-search">
+                <label for="searchInput">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                  Where do you want to go?
+                </label>
+                <input type="text" id="searchInput" placeholder="Search Spiti, Kasol, Meghalaya, Kerala, Ladakh..." autocomplete="off">
+              </div>
+
+              <div class="form-row-search">
+                <div class="form-group-search">
+                  <label for="vibeFilterSelect">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    Trip Vibe
+                  </label>
+                  <select id="vibeFilterSelect">
+                    <option value="ALL">All Categories</option>
+                    <option value="High Altitude Trek">High Altitude Trek</option>
+                    <option value="Backpacking & Culture">Backpacking &amp; Culture</option>
+                    <option value="Road Trip">Road Trip / 4x4</option>
+                    <option value="Beach & Chill">Beach &amp; Chill</option>
+                    <option value="Weekend Getaway">Weekend Getaway</option>
+                  </select>
+                </div>
+
+                <div class="form-group-search">
+                  <label for="budgetFilterSelect">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"></rect><line x1="2" y1="10" x2="22" y2="10"></line></svg>
+                    Max Budget
+                  </label>
+                  <select id="budgetFilterSelect">
+                    <option value="ALL">Any Budget</option>
+                    <option value="8000">Under ₹8,000</option>
+                    <option value="15000">Under ₹15,000</option>
+                    <option value="25000">Under ₹25,000</option>
+                    <option value="40000">Under ₹40,000</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="search-actions">
+                <button type="button" class="btn btn-primary-earth w-100" id="heroSearchSubmitBtn">
+                  <span>Explore 20+ Available Batches</span>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- DISCOVERY & LISTINGS SECTION -->
+      <section class="catalog-section" id="catalogSection">
+        <div class="section-container">
+          
+          <!-- Category Quick Filters -->
+          <div class="filter-bar-wrapper">
+            <div class="filter-chips-scroll" id="categoryChipsContainer">
+              <button class="chip active" data-category="ALL">🌿 All Batches</button>
+              <button class="chip" data-category="High Altitude Trek">🏔️ High Altitude Treks</button>
+              <button class="chip" data-category="Backpacking & Culture">🎒 Backpacking</button>
+              <button class="chip" data-category="Road Trip">🚙 4x4 Road Trips</button>
+              <button class="chip" data-category="Beach & Chill">🌊 Coastal &amp; Beach</button>
+              <button class="chip" data-category="Weekend Getaway">🏕️ Weekend Escapes</button>
+            </div>
+
+            <!-- Sorting & Result Stats -->
+            <div class="sort-and-stats">
+              <span class="results-count" id="resultsCount">Showing 6 batches</span>
+              <div class="sort-wrapper">
+                <label for="sortSelect">Sort:</label>
+                <select id="sortSelect" class="sort-dropdown">
+                  <option value="recommended">Featured / Curated</option>
+                  <option value="price-low">Price: Low to High</option>
+                  <option value="price-high">Price: High to Low</option>
+                  <option value="date-soon">Departing Soonest</option>
+                  <option value="seats-left">Filling Fast</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trip Cards Grid -->
+          <div class="trips-grid" id="tripsGrid">
+            <!-- Rendered dynamically by JavaScript -->
+          </div>
+
+          <!-- Empty State (Hidden by default) -->
+          <div class="empty-state" id="tripsEmptyState" style="display: none;">
+            <div class="empty-icon">🧭</div>
+            <h3>No trips matched your search</h3>
+            <p>Try clearing your filters or search for another destination like Spiti, Kasol, or Kerala.</p>
+            <button class="btn btn-secondary-earth" id="clearFiltersBtn">Reset All Filters</button>
+          </div>
+
+        </div>
+      </section>
+
+    </section>
+
+    <!-- VIEW 2: DASHBOARDS (SWITCHABLE TRAVELLER & ORGANISER) -->
+    <section class="view-section" id="viewDashboard">
+      <div class="section-container">
+        
+        <!-- DASHBOARD HEADER -->
+        <div class="dashboard-header-card">
+          <div class="dashboard-user-info">
+            <div class="user-avatar" id="dashAvatar">AS</div>
+            <div class="user-meta">
+              <div class="user-name-role">
+                <h2 id="dashUserName">Aarav Sharma</h2>
+                <span class="role-tag" id="dashRoleTag">🎒 Traveller</span>
+              </div>
+              <p class="user-contact" id="dashUserContact">aarav.sharma@travelmail.com • Member since March 2026</p>
+            </div>
+          </div>
+
+          <!-- Dashboard Switch Controls -->
+          <div class="dash-quick-controls">
+            <div class="role-switch-container">
+              <span class="switcher-hint">Switch Dashboard View:</span>
+              <div class="dashboard-mode-toggle">
+                <button class="mode-btn active" id="btnDashTraveller">Traveller Hub</button>
+                <button class="mode-btn" id="btnDashOrganiser">Organiser Console</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2A. TRAVELLER DASHBOARD VIEW -->
+        <div class="dashboard-subview" id="travellerDashboardView">
+          
+          <!-- Key Stats Row -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon earth-clay">🎒</div>
+              <div class="stat-info">
+                <span class="stat-number" id="travellerTripsCount">2</span>
+                <span class="stat-label">Booked Expeditions</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon earth-green">🛡️</div>
+              <div class="stat-info">
+                <span class="stat-number" id="travellerEscrowLocked">₹3,498</span>
+                <span class="stat-label">Held in 100% Escrow</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon earth-ochre">🪙</div>
+              <div class="stat-info">
+                <span class="stat-number" id="travellerChaloCash">₹850</span>
+                <span class="stat-label">ChaloCash Loyalty</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon earth-slate">🚨</div>
+              <div class="stat-info">
+                <span class="stat-number">Active</span>
+                <span class="stat-label">SOS Safety Shield</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Escrow Protection Banner in Dashboard -->
+          <div class="escrow-status-card">
+            <div class="escrow-card-left">
+              <span class="shield-badge">Escrow Safe</span>
+              <h4>Protected Payments Active</h4>
+              <p>Your token deposits are held safely in the Chalo Chalein Trust Account. Organisers only receive payouts 24 hours prior to journey kickoff.</p>
+            </div>
+            <div class="escrow-card-right">
+              <button class="btn btn-sm btn-outline-earth" id="viewEscrowPolicyBtn">Learn About Security</button>
+            </div>
+          </div>
+
+          <!-- Booked Trips List -->
+          <div class="dashboard-section-header">
+            <div>
+              <h3>My Booked Journeys &amp; Passes</h3>
+              <p>Manage token status, view itinerary tickets, and prepare for departure</p>
+            </div>
+            <button class="btn btn-sm btn-secondary-earth" id="browseMoreTripsBtn">Book Another Trip</button>
+          </div>
+
+          <div class="traveller-bookings-list" id="travellerBookingsList">
+            <!-- Injected by JavaScript -->
+          </div>
+
+        </div>
+
+        <!-- 2B. ORGANISER DASHBOARD VIEW -->
+        <div class="dashboard-subview" id="organiserDashboardView" style="display: none;">
+          
+          <!-- Organiser Overview Stats -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon earth-clay">🏕️</div>
+              <div class="stat-info">
+                <span class="stat-number" id="orgActiveBatchesCount">3</span>
+                <span class="stat-label">Active Batches</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon earth-green">👥</div>
+              <div class="stat-info">
+                <span class="stat-number" id="orgTotalSeatsBooked">42 / 50</span>
+                <span class="stat-label">Total Seats Filled</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon earth-ochre">💰</div>
+              <div class="stat-info">
+                <span class="stat-number" id="orgEscrowHoldings">₹1,84,500</span>
+                <span class="stat-label">Escrow Payouts Pending</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon earth-slate">⭐</div>
+              <div class="stat-info">
+                <span class="stat-number">4.92 / 5.0</span>
+                <span class="stat-label">Host Community Rating</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Organiser Actions Bar -->
+          <div class="dashboard-section-header">
+            <div>
+              <h3>My Organised Batches &amp; Inventory</h3>
+              <p>Real-time seat locks, traveler rosters, and escrow disintermediation safety</p>
+            </div>
+            <button class="btn btn-primary-earth" id="btnOpenCreateTripModal">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+              <span>Host a New Trip</span>
+            </button>
+          </div>
+
+          <!-- Organiser Trips List -->
+          <div class="organiser-trips-list" id="organiserTripsList">
+            <!-- Injected by JavaScript -->
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- VIEW 3: HOW ESCROW WORKS / TRUST & PRD SPEC VIEW -->
+    <section class="view-section" id="viewHowItWorks">
+      <div class="section-container">
+        <div class="how-it-works-hero">
+          <span class="hero-badge">PRD &amp; Architecture Standards</span>
+          <h2>Solving Broken Group Travel in India</h2>
+          <p>Why Instagram direct booking puts travelers at risk and causes operational nightmares for tour organizers.</p>
+        </div>
+
+        <div class="architecture-flow-grid">
+          <div class="flow-card">
+            <div class="flow-step-num">1</div>
+            <h3>10-Min Concurrency Seat Lock</h3>
+            <p>When you click "Lock Seat", Redis distributed locks reserve the seat for 10 minutes to prevent double-booking on limited batches.</p>
+            <div class="flow-tag">Redis Lock &bull; Optimistic JPA</div>
+          </div>
+
+          <div class="flow-card">
+            <div class="flow-step-num">2</div>
+            <h3>Token Escrow Safeguard</h3>
+            <p>Pay only ₹1,000–₹2,500 token to lock your seat. Money is held safely in Chalo Chalein escrow until 24h before trip launch.</p>
+            <div class="flow-tag">100% Refundable &bull; Zero Scam</div>
+          </div>
+
+          <div class="flow-card">
+            <div class="flow-step-num">3</div>
+            <h3>Automated Payout Release</h3>
+            <p>Organizers get guaranteed automated payouts via gateway split API (Razorpay/Cashfree) once the batch is verified ready for takeoff.</p>
+            <div class="flow-tag">Automated Delay Queue</div>
+          </div>
+
+          <div class="flow-card">
+            <div class="flow-step-num">4</div>
+            <h3>SOS &amp; ChaloCash Rewards</h3>
+            <p>Every trip gets real-time in-app emergency SOS dispatch and yields 5% ChaloCash reward credits for your next journey.</p>
+            <div class="flow-tag">Loyalty &bull; Safety GPS</div>
+          </div>
+        </div>
+
+        <div class="trust-cta-card">
+          <h3>Ready to experience seamless group expeditions?</h3>
+          <p>Join thousands of solo travelers, colleges, and adventure seekers across India.</p>
+          <button class="btn btn-primary-earth" id="trustCtaExploreBtn">Browse All Verified Trips</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== MODALS & POPUPS ==================== -->
+
+  <!-- 1. AUTH MODAL (LOGIN & SIGNUP FOR TRAVELLER & ORGANISER) -->
+  <div class="modal-backdrop" id="authModal" aria-hidden="true">
+    <div class="modal-dialog auth-dialog">
+      <button class="modal-close-btn" id="authModalClose" title="Close modal">&times;</button>
+      
+      <!-- Role Selector Header in Auth -->
+      <div class="auth-header">
+        <h3 id="authModalTitle">Welcome to Chalo Chalein</h3>
+        <p>Select your role to continue your experience</p>
+
+        <!-- Role Toggle Tabs -->
+        <div class="auth-role-tabs">
+          <button class="auth-role-tab active" id="authTabTraveller" data-role="traveller">
+            <span class="tab-emoji">🎒</span>
+            <span class="tab-title">I am a Traveller</span>
+            <span class="tab-sub">Join trips &amp; book tokens</span>
+          </button>
+          <button class="auth-role-tab" id="authTabOrganiser" data-role="organiser">
+            <span class="tab-emoji">🏕️</span>
+            <span class="tab-title">I am an Organiser</span>
+            <span class="tab-sub">List batches &amp; track escrow</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick 1-Click Demo Buttons for Fast Evaluation -->
+      <div class="quick-demo-login-box">
+        <span class="demo-label">Quick Demo Access:</span>
+        <div class="demo-btn-group">
+          <button type="button" class="btn btn-sm btn-subtle-earth" id="demoTravellerBtn">
+            ⚡ Login as Demo Traveller (Aarav)
+          </button>
+          <button type="button" class="btn btn-sm btn-subtle-earth" id="demoOrganiserBtn">
+            ⚡ Login as Demo Organiser (Wanderlust India)
+          </button>
+        </div>
+      </div>
+
+      <!-- Sign In vs Sign Up Tabs -->
+      <div class="auth-mode-switch">
+        <button class="auth-switch-btn active" id="authSwitchLogin">Sign In</button>
+        <button class="auth-switch-btn" id="authSwitchSignup">Create Account</button>
+      </div>
+
+      <!-- AUTH FORM -->
+      <form class="auth-form" id="authForm">
+        
+        <!-- Field: Full Name / Business Name (Sign Up only) -->
+        <div class="form-group signup-only" id="groupFullName" style="display: none;">
+          <label for="authNameInput" id="authNameLabel">Full Name</label>
+          <input type="text" id="authNameInput" placeholder="e.g. Aarav Sharma">
+        </div>
+
+        <!-- Field: Email -->
+        <div class="form-group">
+          <label for="authEmailInput">Email Address</label>
+          <input type="email" id="authEmailInput" placeholder="name@domain.com" required>
+        </div>
+
+        <!-- Field: Phone Number -->
+        <div class="form-group signup-only" id="groupPhone" style="display: none;">
+          <label for="authPhoneInput">WhatsApp / Contact Number (For Trip Updates &amp; SOS)</label>
+          <input type="tel" id="authPhoneInput" placeholder="+91 98765 43210">
+        </div>
+
+        <!-- Field: Organizer Specific (Instagram Handle & GSTIN) -->
+        <div class="form-group organizer-only signup-only" id="groupOrgFields" style="display: none;">
+          <div class="form-row">
+            <div>
+              <label for="authInstaInput">Instagram Handle</label>
+              <input type="text" id="authInstaInput" placeholder="@wanderlust_expeditions">
+            </div>
+            <div>
+              <label for="authGstInput">GSTIN / Govt Reg ID</label>
+              <input type="text" id="authGstInput" placeholder="07AAAAA0000A1Z5">
+            </div>
+          </div>
+        </div>
+
+        <!-- Field: Password -->
+        <div class="form-group">
+          <label for="authPasswordInput">Password</label>
+          <input type="password" id="authPasswordInput" placeholder="••••••••" required>
+        </div>
+
+        <!-- Form Submit -->
+        <button type="submit" class="btn btn-primary-earth w-100 mt-2" id="authSubmitBtn">
+          Sign In to Chalo Chalein
+        </button>
+
+        <p class="auth-footnote" id="authFootnote">
+          By signing in, you agree to Chalo Chalein's Escrow Safety &amp; Cancellation Terms.
+        </p>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. TRIP DETAIL MODAL (ITINERARY, ESCROW BREAKDOWN & BOOKING CTA) -->
+  <div class="modal-backdrop" id="tripDetailModal" aria-hidden="true">
+    <div class="modal-dialog trip-detail-dialog">
+      <button class="modal-close-btn" id="tripModalClose" title="Close trip details">&times;</button>
+      
+      <div class="trip-modal-scroll" id="tripModalContent">
+        <!-- Injected dynamically by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SEAT LOCK & TOKEN CONFIRMATION MODAL (PRD State Machine) -->
+  <div class="modal-backdrop" id="bookingConfirmModal" aria-hidden="true">
+    <div class="modal-dialog booking-dialog">
+      <button class="modal-close-btn" id="bookingModalClose" title="Close">&times;</button>
+      
+      <div class="booking-dialog-content" id="bookingDialogContent">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. ORGANISER: CREATE NEW TRIP MODAL -->
+  <div class="modal-backdrop" id="createTripModal" aria-hidden="true">
+    <div class="modal-dialog create-trip-dialog">
+      <button class="modal-close-btn" id="createTripClose" title="Close">&times;</button>
+      
+      <div class="create-trip-header">
+        <span class="badge-role">Organiser Console</span>
+        <h3>Host a New Group Expedition</h3>
+        <p>Publish a batch on Chalo Chalein with automated token lock &amp; escrow guarantee.</p>
+      </div>
+
+      <form id="createTripForm" class="create-trip-form">
+        <div class="form-group">
+          <label for="tripTitleInput">Trip Title *</label>
+          <input type="text" id="tripTitleInput" placeholder="e.g. Spiti Valley Winter Expedition: Frozen Waterfalls" required>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="tripDestInput">Destination &amp; Region *</label>
+            <input type="text" id="tripDestInput" placeholder="e.g. Spiti Valley, Himachal Pradesh" required>
+          </div>
+          <div class="form-group">
+            <label for="tripVibeInput">Category / Vibe *</label>
+            <select id="tripVibeInput" required>
+              <option value="High Altitude Trek">High Altitude Trek</option>
+              <option value="Backpacking & Culture">Backpacking &amp; Culture</option>
+              <option value="Road Trip">Road Trip / 4x4</option>
+              <option value="Beach & Chill">Beach &amp; Chill</option>
+              <option value="Weekend Getaway">Weekend Getaway</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="tripStartDateInput">Start Date *</label>
+            <input type="date" id="tripStartDateInput" required>
+          </div>
+          <div class="form-group">
+            <label for="tripEndDateInput">End Date *</label>
+            <input type="date" id="tripEndDateInput" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="tripSeatsInput">Total Seats Available *</label>
+            <input type="number" id="tripSeatsInput" min="4" max="50" value="16" required>
+          </div>
+          <div class="form-group">
+            <label for="tripTokenAmountInput">Token Lock Amount (₹) *</label>
+            <input type="number" id="tripTokenAmountInput" min="500" max="10000" step="100" value="1499" required>
+            <small class="field-hint">Non-refundable escrow lock amount</small>
+          </div>
+          <div class="form-group">
+            <label for="tripTotalAmountInput">Total Trip Price (₹) *</label>
+            <input type="number" id="tripTotalAmountInput" min="2000" max="150000" step="500" value="14999" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="tripImageInput">Cover Photo (Earthy Unsplash or Local URL)</label>
+          <input type="url" id="tripImageInput" placeholder="https://images.unsplash.com/photo-...">
+          <small class="field-hint">Leave blank to use our curated soothing nature photo</small>
+        </div>
+
+        <div class="form-group">
+          <label for="tripDescInput">Brief Itinerary &amp; Highlights *</label>
+          <textarea id="tripDescInput" rows="3" placeholder="Describe the day-by-day vibe, homestays, vehicle type, and what is included..." required></textarea>
+        </div>
+
+        <div class="modal-action-footer">
+          <button type="button" class="btn btn-secondary-earth" id="cancelCreateTripBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary-earth">Publish Batch to Marketplace</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 5. ORGANISER: VIEW GUEST LIST & PASSENGERS MODAL -->
+  <div class="modal-backdrop" id="attendeesModal" aria-hidden="true">
+    <div class="modal-dialog attendees-dialog">
+      <button class="modal-close-btn" id="attendeesModalClose" title="Close">&times;</button>
+      
+      <div class="attendees-header" id="attendeesHeader">
+        <!-- Rendered by JS -->
+      </div>
+
+      <div class="attendees-actions-bar" style="display: flex; gap: 0.6rem; margin: 0.75rem 0; flex-wrap: wrap;">
+        <button class="btn btn-sm btn-outline-earth" id="copyWhatsAppNumbersBtn">
+          📋 Copy Numbers for WhatsApp
+        </button>
+        <button class="btn btn-sm btn-subtle-earth" id="exportRosterCsvBtn">
+          📥 Download Guest Roster (CSV)
+        </button>
+      </div>
+
+      <div class="attendees-table-wrap" id="attendeesContent">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. DIGITAL TICKET / BOARDING PASS MODAL -->
+  <div class="modal-backdrop" id="ticketModal" aria-hidden="true">
+    <div class="modal-dialog ticket-dialog">
+      <button class="modal-close-btn" id="ticketModalClose" title="Close ticket">&times;</button>
+      <div class="ticket-wrapper" id="ticketContent">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 7. PAY REMAINING BALANCE MODAL -->
+  <div class="modal-backdrop" id="balanceModal" aria-hidden="true">
+    <div class="modal-dialog balance-dialog">
+      <button class="modal-close-btn" id="balanceModalClose" title="Close">&times;</button>
+      <div class="balance-dialog-content" id="balanceContent">
+        <!-- Rendered dynamically by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. SOS EMERGENCY POPUP MODAL (PRD Feature) -->
+  <div class="modal-backdrop" id="sosModal" aria-hidden="true">
+    <div class="modal-dialog sos-dialog">
+      <button class="modal-close-btn" id="sosModalClose" title="Close">&times;</button>
+      <div class="sos-content">
+        <div class="sos-alert-icon">🚨</div>
+        <h3>Trip SOS &amp; Emergency Dispatch</h3>
+        <p>In-app safety protocol for active Chalo Chalein group journeys.</p>
+        
+        <div class="sos-info-box">
+          <div class="sos-row">
+            <strong>Batch Organiser:</strong> <span id="sosHostName">Himalayan Nomads</span>
+          </div>
+          <div class="sos-row">
+            <strong>Emergency Helpline:</strong> <span class="phone-link">+91 1800-CHALO-SAFE (24x7)</span>
+          </div>
+          <div class="sos-row">
+            <strong>Current GPS Coordinates:</strong> <span>32.2461° N, 77.1887° E (Simulated)</span>
+          </div>
+          <div class="sos-row">
+            <strong>Local Rescue Partner:</strong> <span>State Disaster Management &amp; Himalayan SAR</span>
+          </div>
+        </div>
+
+        <button class="btn btn-primary-earth w-100" id="sosBroadcastBtn">
+          Broadcast Alert to Organiser &amp; Local Authorities
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+  <!-- FOOTER -->
+  <footer class="main-footer">
+    <div class="footer-container">
+      <div class="footer-col brand-col">
+        <div class="logo-mark">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+            <path d="M16 3L3 10L16 17L29 10L16 3Z" fill="var(--color-terracotta)"/>
+            <path d="M7 16L3 18L16 25L29 18L25 16L16 21L7 16Z" fill="var(--color-sage)"/>
+          </svg>
+        </div>
+        <h4>Chalo Chalein</h4>
+        <p>India's trusted marketplace for youth and millennial group experiential travel. Built with Escrow token locks to keep your adventures safe.</p>
+        <span class="copyright">&copy; 2026 Chalo Chalein Inc. Based in New Delhi &amp; Bengaluru.</span>
+      </div>
+
+      <div class="footer-col">
+        <h5>For Travellers</h5>
+        <ul>
+          <li><a href="#" class="footer-link" data-view="explore">Explore Trips</a></li>
+          <li><a href="#" class="footer-link" data-view="how-it-works">Escrow Guarantee</a></li>
+          <li><a href="#" class="footer-link" data-view="dashboard">ChaloCash Loyalty</a></li>
+          <li><a href="#" class="footer-link" data-view="how-it-works">SOS &amp; Safety</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>For Tour Organisers</h5>
+        <ul>
+          <li><a href="#" class="footer-link" id="footerHostTripLink">Host a Batch</a></li>
+          <li><a href="#" class="footer-link" data-view="dashboard">Organiser Console</a></li>
+          <li><a href="#" class="footer-link" data-view="how-it-works">Split Escrow Payouts</a></li>
+          <li><a href="#" class="footer-link" data-view="how-it-works">GST &amp; Verification</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Platform Escrow Standard</h5>
+        <div class="escrow-mini-badge">
+          <span>🛡️ Verified Escrow Partner</span>
+          <small>Razorpay Route / Cashfree Split Escrow compliant</small>
+        </div>
+        <p class="footer-disclaimer">Zero disintermediation risk. Transparent seats concurrency locking.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
