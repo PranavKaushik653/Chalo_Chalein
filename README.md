@@ -10,9 +10,7 @@ Chalo Chalein is a marketplace for youth group trips. Travellers lock a seat wit
 
 Group trips in India are sold mostly through Instagram pages and DMs, so travellers compare prices by hand and pay strangers by UPI.
 
-- **Scale:** about [553 million Instagram users in India](https://stats.napoleoncat.com/instagram-users-in-india/2026/06/) (June 2026), roughly 77% aged 18 to 34 ([NapoleonCat](https://stats.napoleoncat.com/instagram-users-in-india/2026/05/)).
 - **Market:** India's packaged holidays market is about [USD 11 billion and fragmented](https://www.dsgcp.com/insights/why-we-partnered-with-wanderon-building-indias-most-loved-experiential-travel-platform), and domestic tourist visits reached about [2.95 billion in 2024](https://www.policyedge.in/p/india-tourism-data-compendium-2025).
-- **Trust risk:** for example, a couple lost [₹1.56 lakh to a fake Instagram Bali package](https://www.freepressjournal.in/mumbai/juinagar-couple-duped-of-156-lakh-by-fake-instagram-travel-agents-for-bali-trip).
 - **Organisers** track seats and deposits in chats and spreadsheets.
 
 There is no public count of Instagram travel-group pages, so these figures show the audience and market they operate in.
