@@ -5,6 +5,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/ai_agent/pom.xml" />
+        <option value="$PROJECT_DIR$/web_backend/pom.xml" />
       </list>
     </option>
   </component>
