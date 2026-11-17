@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8080
   error:
     include-message: never
     include-stacktrace: never
@@ -9,51 +9,27 @@ server:
       timeout: 30m
       cookie:
         http-only: true
-        secure: ${COOKIE_SECURE:true}
+        secure: ${COOKIE_SECURE:false}   # true in production
         same-site: lax
 
 spring:
   application:
     name: chalochalein
-  datasource:                       # least-privilege app role
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/chalochalein}
-    username: ${DB_APP_USER:chalo_app}
-    password: ${DB_APP_PASSWORD}
+  datasource:
+    url: jdbc:postgresql://localhost:5433/chalochalein
+    username: chalo
+    password: ${DB_PASSWORD}
     hikari:
       maximum-pool-size: 10
-  flyway:                           # migrations run as a separate owner role
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/chalochalein}
-    user: ${DB_MIGRATOR_USER:chalo_migrator}
-    password: ${DB_MIGRATOR_PASSWORD}
   jpa:
     open-in-view: false
     hibernate:
-      ddl-auto: validate            # Flyway owns the schema; set to "none" if validate complains
+      ddl-auto: validate          # set to "none" if it complains before the entities exist
   session:
     jdbc:
-      initialize-schema: never      # table comes from V2 migration
-  ai:
-    google:
-      genai:
-        api-key: ${GEMINI_API_KEY}
-        chat:
-          model: ${GEMINI_MODEL:gemini-2.5-flash-lite}
-          temperature: 0.2
-          max-output-tokens: 700
-    retry:
-      max-attempts: 2
-      backoff:
-        initial-interval: 1s
-        multiplier: 2
-        max-interval: 5s
+      initialize-schema: never    # the table comes from V2 later
 
 chalo:
-  agent-db:                         # read-only role, views only
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/chalochalein}
-    username: ${AGENT_DB_USER:chalo_agent_ro}
-    password: ${AGENT_DB_PASSWORD}
   bootstrap:
     admin-email: ${ADMIN_EMAIL:}
     admin-password: ${ADMIN_PASSWORD:}
-  dev:
-    seed-password: ${DEV_SEED_PASSWORD:}
